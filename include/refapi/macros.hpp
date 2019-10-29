@@ -1,0 +1,6 @@
+#ifndef REFAPI__REFERENCE_HPP
+#define REFAPI__REFERENCE_HPP
+
+
+
+#endif //REFAPI__REFERENCE_HPP
