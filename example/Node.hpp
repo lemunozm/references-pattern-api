@@ -3,12 +3,9 @@
 
 #include "NodeImpl.hpp"
 
-#include <refapi/macros.hpp>
-#include <refapi/Reference.hpp>
+#include <refapi/refapi.hpp>
 
-using namespace refapi;
-
-class NodeInfo : public Reference<impl::NodeInfo>
+class NodeInfo : public refapi::Reference<impl::NodeInfo>
 {
     REF_API_CLASS_BASE(NodeInfo, impl::NodeInfo)
 public:

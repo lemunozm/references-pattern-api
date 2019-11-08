@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.5.0 FATAL_ERROR)
 
 project(refapi
     VERSION "0.1.0"
@@ -7,26 +7,22 @@ project(refapi
 
 include(GNUInstallDirs)
 
-option(BUILD_EXAMPLE "Build examples." OFF)
+option(BUILD_EXAMPLES "Build examples." OFF)
 
 #####################################################################################
 #                                    Library
 #####################################################################################
 add_library(${PROJECT_NAME} INTERFACE)
 
-target_sources(${PROJECT_NAME}
-    INTERFACE
-        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include/refapi/Reference.hpp>
-    )
-
 target_include_directories(${PROJECT_NAME}
     INTERFACE
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
     )
 
 target_compile_features(${PROJECT_NAME}
     INTERFACE
-        cxx_range_for #"equivalent" to cxx_std_11
+        cxx_std_11
     )
 
 #####################################################################################
@@ -71,9 +67,9 @@ install(
 
 install(
     DIRECTORY
-    ${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/
+        ${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/
     DESTINATION
-    ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}
+        ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}
     FILES_MATCHING
         PATTERN "*.hpp"
     )
