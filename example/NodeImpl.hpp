@@ -15,6 +15,7 @@ public:
     {}
 
     const std::string& name() const { return name_; }
+    virtual size_t size() const = 0;
 
 private:
     std::string name_;
@@ -28,6 +29,11 @@ public:
         : NodeInfo(name)
         , parent_(nullptr)
     {}
+
+    virtual size_t size() const
+    {
+        return sizeof(Node);
+    }
 
     const std::shared_ptr<Node> parent() const { return parent_; }
 

@@ -9,6 +9,7 @@ int main()
     node.attach(Node("child_2"));
 
     std::cout << node.name() << std::endl;
+    std::cout << node.size() << std::endl;
 
     return 0;
 }
