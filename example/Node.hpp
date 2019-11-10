@@ -7,23 +7,17 @@
 
 class NodeInfo : public refapi::Reference<impl::NodeInfo>
 {
-    REF_API_CLASS_BASE(NodeInfo, impl::NodeInfo)
-public:
-    const std::string name() const { return impl()->name(); }
-    size_t size() const { return impl()->size(); }
+    REF_API_CLASS(impl::NodeInfo, NodeInfo, Reference)
 };
 
 
 class Node : public NodeInfo
 {
-    REF_API_CLASS_INHERITANCE(Node, NodeInfo, impl::Node)
+    REF_API_CLASS(impl::Node, Node, NodeInfo)
 public:
     Node(const std::string& name)
         : NodeInfo(std::make_shared<impl::Node>(name))
     {}
-    const Node parent() const { return impl()->parent(); }
-    void attach(Node node) { impl()->attach(node.impl()); }
-    Node deattach(const std::string& name) { return impl()->dettach(name); }
 };
 
 

@@ -1,13 +1,7 @@
 #ifndef REFAPI__REFERENCE_HPP
 #define REFAPI__REFERENCE_HPP
 
-#define REF_API_CLASS_BASE(API_CLASS, IMPL_CLASS) \
-    protected: \
-    API_CLASS(const std::shared_ptr<IMPL_CLASS>& other) \
-        : Reference(other) \
-    {}
-
-#define REF_API_CLASS_INHERITANCE(API_CLASS, API_BASE_CLASS, IMPL_CLASS) \
+#define REF_API_CLASS(IMPL_CLASS, API_CLASS, API_BASE_CLASS) \
     protected: \
     API_CLASS(const std::shared_ptr<IMPL_CLASS>& other) \
         : API_BASE_CLASS(other) \
@@ -21,7 +15,24 @@
     const std::shared_ptr<IMPL_CLASS> impl() const \
     { \
         return std::static_pointer_cast<IMPL_CLASS>(API_BASE_CLASS::impl()); \
-    }
+    } \
+    \
+    public: \
+    IMPL_CLASS* operator ->() \
+    { \
+        return impl().get(); \
+    } \
+    \
+    const IMPL_CLASS* operator ->() const \
+    { \
+        return impl().get(); \
+    } \
+    operator std::shared_ptr<IMPL_CLASS>() \
+    { \
+        return std::static_pointer_cast<IMPL_CLASS>(impl()); \
+    } \
+    private:
+
 
 #include <memory>
 
