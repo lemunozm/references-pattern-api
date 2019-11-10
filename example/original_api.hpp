@@ -1,11 +1,11 @@
-#ifndef REFAPI__EXAMPLE__NODEIMPL_HPP
-#define REFAPI__EXAMPLE__NODEIMPL_HPP
+#ifndef REFAPI__EXAMPLE__ORIGINAL_API_HPP
+#define REFAPI__EXAMPLE__ORIGINAL_API_HPP
 
 #include <memory>
 #include <string>
 #include <map>
 
-namespace impl {
+namespace original_api {
 
 class NodeInfo
 {
@@ -64,8 +64,6 @@ private:
     std::map<std::string, std::shared_ptr<Node>> children_;
 };
 
-}
+} //namespace original_api
 
-
-
-#endif //REFAPI__EXAMPLE__NODEIMPL_HPP
+#endif //REFAPI__EXAMPLE__ORIGINAL_API_HPP

@@ -1,6 +1,8 @@
-#include "Node.hpp"
+#include "reference_api.hpp"
 
 #include <iostream>
+
+using namespace reference_api;
 
 int main()
 {
