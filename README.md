@@ -9,4 +9,4 @@ keeping the behaviour (Now `MyClass` acts as a `shared_ptr<MyClass`).
 You can see a small example of this concept into the [example](example) folder.
 
 ## How to use?
-Easy! copy and paste the utility header [`include/refapi/refapi.hpp`](include/refapi/refapi.hpp) into your project and include it.
+Easy! copy and paste the utility header [`include/refapi/refapi.hpp`](include/refapi/refapi.hpp) into your project and include it!
