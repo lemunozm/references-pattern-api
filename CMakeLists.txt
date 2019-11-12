@@ -53,6 +53,15 @@ set_target_properties(${EXAMPLE_NAME}
 #                                   Installation
 #####################################################################################
 install(
+    DIRECTORY
+        ${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/
+    DESTINATION
+        ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}
+    FILES_MATCHING
+        PATTERN "*.hpp"
+    )
+
+install(
     TARGETS
         ${PROJECT_NAME}
     EXPORT
@@ -63,15 +72,6 @@ install(
         ${CMAKE_INSTALL_LIBDIR}
     ARCHIVE DESTINATION
         ${CMAKE_INSTALL_LIBDIR}
-    )
-
-install(
-    DIRECTORY
-        ${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/
-    DESTINATION
-        ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}
-    FILES_MATCHING
-        PATTERN "*.hpp"
     )
 
 install(
