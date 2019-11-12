@@ -35,26 +35,27 @@ public:
         return sizeof(Node);
     }
 
-    const std::shared_ptr<Node> parent() const { return parent_; }
+    const std::shared_ptr<Node>& parent() const { return parent_; }
 
-    void attach(std::shared_ptr<Node> node)
+    void attach(const std::shared_ptr<Node>& node)
     {
-        parent_ = node;
+        //node.parent_ = this;
         children_.emplace(node->name(), node);
     }
 
-    std::shared_ptr<Node> dettach(const std::string& name)
+    const std::shared_ptr<Node>& dettach(const std::string& name)
     {
         auto it = children_.find(name);
         if(it == children_.end())
         {
-            return nullptr;
+            static std::shared_ptr<Node> null;
+            return null;
         }
         it->second->parent_ = nullptr;
         return it->second;
     }
 
-    std::shared_ptr<Node> operator [](const std::string& name)
+    const std::shared_ptr<Node>& operator [](const std::string& name)
     {
         return children_.at(name);
     }
